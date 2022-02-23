@@ -1,6 +1,6 @@
 import debug from "debug";
 
-export const LOGGER_NAMESPACE = "gpay-covid-cards";
+export const LOGGER_NAMESPACE = "eu-dcc-generator";
 
 const logger = debug(LOGGER_NAMESPACE);
 
