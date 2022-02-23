@@ -1,0 +1,170 @@
+{
+    "3339641000133109": {
+        "short_name": "PFIZER",
+        "name": "PFIZER-BIONTECH COVID-19 Vaccine [Tozinameran] Injection",
+        "disease_agent_targeted_code": "840539006",
+        "vaccine_prophylaxis_code": "1119349007",
+        "vaccine_medicinal_product_code": "EU/1/20/1528",
+        "authorization_holder_code": "ORG-100030215"
+    },
+    "3407851000133103": {
+        "short_name": "MODERNA",
+        "name": "MODERNA COVID-19 Vaccine [mRNA-1273] Injection",
+        "disease_agent_targeted_code": "840539006",
+        "vaccine_prophylaxis_code": "1119349007",
+        "vaccine_medicinal_product_code": "EU/1/20/1507",
+        "authorization_holder_code": "ORG-100031184"
+    },
+    "3440141000133104": {
+        "short_name": "SINOVAC",
+        "name": "CORONAVAC COVID-19 Vaccine (SINOVAC) [SARS-CoV-2 Virus (inactivated, CZ02 strain)] Injection",
+        "disease_agent_targeted_code": "840539006",
+        "vaccine_prophylaxis_code": "J07BX03",
+        "vaccine_medicinal_product_code": "CoronaVac",
+        "authorization_holder_code": "Sinovac-Biotech"
+    },
+    "4544521000133102": {
+        "short_name": "ASTRAZENECA",
+        "name": "ASTRAZENECA COVID-19 Vaccine [ChAdOx1-S] Injection",
+        "disease_agent_targeted_code": "840539006",
+        "vaccine_prophylaxis_code": "J07BX03",
+        "vaccine_medicinal_product_code": "EU/1/21/1529",
+        "authorization_holder_code": "ORG-100001699"
+    },
+    "4544551000133105": {
+        "short_name": "COVISHIELD",
+        "name": "COVISHIELD COVID-19 Vaccine (SII) [ChAdOx1-S] Injection",
+        "disease_agent_targeted_code": "840539006",
+        "vaccine_prophylaxis_code": "J07BX03",
+        "vaccine_medicinal_product_code": "Covishield",
+        "authorization_holder_code": "ORG-100001981"
+    },
+    "4544501000133106": {
+        "short_name": "JANSSEN",
+        "name": "JANSSEN COVID-19 Vaccine [Ad26.COV2-S] Injection",
+        "disease_agent_targeted_code": "840539006",
+        "vaccine_prophylaxis_code": "J07BX03",
+        "vaccine_medicinal_product_code": "EU/1/20/1525",
+        "authorization_holder_code": "ORG-100001417"
+    },
+    "4544491000133104": {
+        "short_name": "SINOPHARM",
+        "name": "SINOPHARM BIBP COVID-19 Vaccine [SARS-CoV-2 Virus (inactivated, HB02 strain)] Injection",
+        "disease_agent_targeted_code": "840539006",
+        "vaccine_prophylaxis_code": "J07BX03",
+        "vaccine_medicinal_product_code": "BBIBP-CorV",
+        "authorization_holder_code": "ORG-100020693"
+    },
+    "714731000133108": {
+        "short_name": "SINOPHARM",
+        "name": "SINOPHARM WIBP COVID-19 Vaccine [SARS-CoV-2 Virus (inactivated, WIV04 strain)] Injection",
+        "disease_agent_targeted_code": "840539006",
+        "vaccine_prophylaxis_code": "J07BX03",
+        "vaccine_medicinal_product_code": "WIBP-CorV",
+        "authorization_holder_code": "Sinopharm-WIBP"
+    },
+    "724971000133100": {
+        "short_name": "SINOPHARM",
+        "name": "SINOPHARM WIBP COVID-19 Vaccine [SARS-CoV-2 Virus (inactivated, WIV04 strain)] 5 microgram/ 0.5 mL Injection",
+        "disease_agent_targeted_code": "840539006",
+        "vaccine_prophylaxis_code": "J07BX03",
+        "vaccine_medicinal_product_code": "WIBP-CorV",
+        "authorization_holder_code": "Sinopharm-WIBP"
+    },
+    "827371000133108": {
+        "short_name": "COVAXIN",
+        "name": "COVAXIN COVID-19 Vaccine [SARS-CoV-2 Virus (inactivated, NIV-2020-770 strain)] Injection",
+        "disease_agent_targeted_code": "840539006",
+        "vaccine_prophylaxis_code": "J07BX03",
+        "vaccine_medicinal_product_code": "Covaxin",
+        "authorization_holder_code": "Bharat-Biotech"
+    },
+    "827381000133106": {
+        "short_name": "COVAXIN",
+        "name": "COVAXIN COVID-19 Vaccine [SARS-CoV-2 Virus (inactivated, NIV-2020-770 strain)] 6 microgram/ 0.5 mL Injection",
+        "disease_agent_targeted_code": "840539006",
+        "vaccine_prophylaxis_code": "J07BX03",
+        "vaccine_medicinal_product_code": "Covaxin",
+        "authorization_holder_code": "Bharat-Biotech"
+    },
+    "827441000133108": {
+        "short_name": "COVAXIN",
+        "name": "COVAXIN COVID-19 Vaccine [SARS-CoV-2 Virus (inactivated, NIV-2020-770 strain)] 30 microgram/ 2.5 mL Injection",
+        "disease_agent_targeted_code": "840539006",
+        "vaccine_prophylaxis_code": "J07BX03",
+        "vaccine_medicinal_product_code": "Covaxin",
+        "authorization_holder_code": "Bharat-Biotech"
+    },
+    "827451000133105": {
+        "short_name": "COVAXIN",
+        "name": "COVAXIN COVID-19 Vaccine [SARS-CoV-2 Virus (inactivated, NIV-2020-770 strain)] 60 microgram/ 5 mL Injection",
+        "disease_agent_targeted_code": "840539006",
+        "vaccine_prophylaxis_code": "J07BX03",
+        "vaccine_medicinal_product_code": "Covaxin",
+        "authorization_holder_code": "Bharat-Biotech"
+    },
+    "827461000133107": {
+        "short_name": "COVAXIN",
+        "name": "COVAXIN COVID-19 Vaccine [SARS-CoV-2 Virus (inactivated, NIV-2020-770 strain)] 120 microgram/ 10 mL Injection",
+        "disease_agent_targeted_code": "840539006",
+        "vaccine_prophylaxis_code": "J07BX03",
+        "vaccine_medicinal_product_code": "Covaxin",
+        "authorization_holder_code": "Bharat-Biotech"
+    },
+    "878571000133104": {
+        "short_name": "PFIZER",
+        "name": "PFIZER-BIONTECH/COMIRNATY (AGE 5 to <12 YEARS) COVID-19 Vaccine [Tozinameran] 100 microgram/ 10 dose Injection",
+        "disease_agent_targeted_code": "840539006",
+        "vaccine_prophylaxis_code": "1119349007",
+        "vaccine_medicinal_product_code": "EU/1/20/1528",
+        "authorization_holder_code": "ORG-100030215"
+    },
+    "991221000133108": {
+        "short_name": "COVOVAX",
+        "name": "COVOVAX COVID-19 Vaccine [NVX-CoV2373 (adjuvanted)] Injection",
+        "disease_agent_targeted_code": "840539006",
+        "vaccine_prophylaxis_code": "J07BX03",
+        "vaccine_medicinal_product_code": "Covovax",
+        "authorization_holder_code": "ORG-100001981"
+    },
+    "991251000133100": {
+        "short_name": "COVOVAX",
+        "name": "COVOVAX COVID-19 Vaccine [NVX-CoV2373 (adjuvanted)] 50 microgram/ 5 mL Injection",
+        "disease_agent_targeted_code": "840539006",
+        "vaccine_prophylaxis_code": "J07BX03",
+        "vaccine_medicinal_product_code": "Covovax",
+        "authorization_holder_code": "ORG-100001981"
+    },
+    "991241000133102": {
+        "short_name": "COVOVAX",
+        "name": "COVOVAX COVID-19 Vaccine [NVX-CoV2373 (adjuvanted)] 5 microgram/ 0.5 mL Injection",
+        "disease_agent_targeted_code": "840539006",
+        "vaccine_prophylaxis_code": "J07BX03",
+        "vaccine_medicinal_product_code": "Covovax",
+        "authorization_holder_code": "ORG-100001981"
+    },
+    "1011691000133100": {
+        "short_name": "NUVAXOVID",
+        "name": "NUVAXOVID COVID-19 Vaccine [NVX-CoV2373 (adjuvanted)] Injection",
+        "disease_agent_targeted_code": "840539006",
+        "vaccine_prophylaxis_code": "J07BX03",
+        "vaccine_medicinal_product_code": "EU/1/21/1618",
+        "authorization_holder_code": "ORG-100032020"
+    },
+    "1021941000133107": {
+        "short_name": "NUVAXOVID",
+        "name": "NUVAXOVID COVID-19 Vaccine [NVX-CoV2373 (adjuvanted)] 50 microgram/ 5 mL Injection",
+        "disease_agent_targeted_code": "840539006",
+        "vaccine_prophylaxis_code": "J07BX03",
+        "vaccine_medicinal_product_code": "EU/1/21/1618",
+        "authorization_holder_code": "ORG-100032020"
+    },
+    "3418091000133101": {
+        "short_name": "MODERNA",
+        "name": "MODERNA COVID-19 Vaccine [mRNA-1273] 1 mg/ 5 mL Injection",
+        "disease_agent_targeted_code": "840539006",
+        "vaccine_prophylaxis_code": "1119349007",
+        "vaccine_medicinal_product_code": "EU/1/20/1507",
+        "authorization_holder_code": "ORG-100031184"
+    }
+}
