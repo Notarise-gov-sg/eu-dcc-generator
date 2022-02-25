@@ -1,7 +1,7 @@
 import { genTestingRecord } from "./pdt";
 import { TestingRecord } from "../types";
 
-const validTestingRecord: TestingRecord[] = [
+const validPCRTestingRecord: TestingRecord[] = [
   {
     testTypeCode: "258500001",
     naatTestName: "SARS-CoV-2 (COVID-19) RNA panel - Respiratory specimen by NAA with probe detection",
@@ -12,10 +12,21 @@ const validTestingRecord: TestingRecord[] = [
   }
 ];
 
+const validARTTestingRecord: TestingRecord[] = [
+  {
+    testTypeCode: "258500001",
+    ratTestDeviceCode: "1833",
+    collectionDateTime: "2020-09-27T06:15:00Z",
+    testResultCode: "260385009",
+    testCenter: "MacRitchie Medical Clinic",
+    testCountry: "SG"
+  }
+];
+
 describe("genTestingRecord()", () => {
   it("should produce valid TestingRecord PCR for Negative record", () => {
     const valid: TestingRecord[] = [{
-      ...validTestingRecord[0],
+      ...validPCRTestingRecord[0],
       testResultCode: "260385009", // The correct Negative code
     }];
 
@@ -26,6 +37,7 @@ describe("genTestingRecord()", () => {
             ci: "URN:UVCI:01:SG:1ABC-ADV-CDE",
             co: "SG",
             is: "MOH",
+            nm: "SARS-CoV-2 (COVID-19) RNA panel - Respiratory specimen by NAA with probe detection",
             sc: "2020-09-27T06:15:00Z",
             tc: "MacRitchie Medical Clinic",
             tg: "840539006",
@@ -40,7 +52,7 @@ describe("genTestingRecord()", () => {
 
   it("should produce valid TestingRecord PCR for Negative record using EU DCC Test Result Code", () => {
     const valid: TestingRecord[] = [{
-      ...validTestingRecord[0],
+      ...validPCRTestingRecord[0],
       testResultCode: "260415000", // The correct "Not detected" code
     }];
 
@@ -51,6 +63,7 @@ describe("genTestingRecord()", () => {
             ci: "URN:UVCI:01:SG:1ABC-ADV-CDE",
             co: "SG",
             is: "MOH",
+            nm: "SARS-CoV-2 (COVID-19) RNA panel - Respiratory specimen by NAA with probe detection",
             sc: "2020-09-27T06:15:00Z",
             tc: "MacRitchie Medical Clinic",
             tg: "840539006",
@@ -65,7 +78,7 @@ describe("genTestingRecord()", () => {
 
   it("should produce valid TestingRecord PCR for Positive record", () => {
     const valid: TestingRecord[] = [{
-      ...validTestingRecord[0],
+      ...validPCRTestingRecord[0],
       testResultCode: "10828004", // The correct Positive code
     }];
 
@@ -76,6 +89,7 @@ describe("genTestingRecord()", () => {
             ci: "URN:UVCI:01:SG:1ABC-ADV-CDE",
             co: "SG",
             is: "MOH",
+            nm: "SARS-CoV-2 (COVID-19) RNA panel - Respiratory specimen by NAA with probe detection",
             sc: "2020-09-27T06:15:00Z",
             tc: "MacRitchie Medical Clinic",
             tg: "840539006",
@@ -90,7 +104,7 @@ describe("genTestingRecord()", () => {
 
   it("should produce valid TestingRecord PCR for Positive record using EU DCC Test Result Code", () => {
     const valid: TestingRecord[] = [{
-      ...validTestingRecord[0],
+      ...validPCRTestingRecord[0],
       testResultCode: "260373001", // The correct "Detected" code
     }];
 
@@ -101,6 +115,7 @@ describe("genTestingRecord()", () => {
             ci: "URN:UVCI:01:SG:1ABC-ADV-CDE",
             co: "SG",
             is: "MOH",
+            nm: "SARS-CoV-2 (COVID-19) RNA panel - Respiratory specimen by NAA with probe detection",
             sc: "2020-09-27T06:15:00Z",
             tc: "MacRitchie Medical Clinic",
             tg: "840539006",
@@ -115,7 +130,7 @@ describe("genTestingRecord()", () => {
 
   it("should produce valid TestingRecord for PCR Saliva record", () => {
     const valid: TestingRecord[] = [{
-      ...validTestingRecord[0],
+      ...validPCRTestingRecord[0],
       testTypeCode: "119342007", // The correct PCR Saliva
     }];
 
@@ -126,6 +141,7 @@ describe("genTestingRecord()", () => {
             ci: "URN:UVCI:01:SG:1ABC-ADV-CDE",
             co: "SG",
             is: "MOH",
+            nm: "SARS-CoV-2 (COVID-19) RNA panel - Respiratory specimen by NAA with probe detection",
             sc: "2020-09-27T06:15:00Z",
             tc: "MacRitchie Medical Clinic",
             tg: "840539006",
@@ -140,7 +156,7 @@ describe("genTestingRecord()", () => {
 
   it("should produce valid TestingRecord for ART record", () => {
     const valid: TestingRecord[] = [{
-      ...validTestingRecord[0],
+      ...validARTTestingRecord[0],
       testTypeCode: "697989009", // The correct ART [snomed]
     }];
 
@@ -151,6 +167,7 @@ describe("genTestingRecord()", () => {
             ci: "URN:UVCI:01:SG:1ABC-ADV-CDE",
             co: "SG",
             is: "MOH",
+            ma: "1833",
             sc: "2020-09-27T06:15:00Z",
             tc: "MacRitchie Medical Clinic",
             tg: "840539006",
@@ -165,7 +182,7 @@ describe("genTestingRecord()", () => {
 
   it("should throw error there is an invalid testResultCode", () => {
     const invalid: TestingRecord[] = [{
-      ...validTestingRecord[0],
+      ...validPCRTestingRecord[0],
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       testResultCode: "123456" as any // Invalid test code
     }];
@@ -177,7 +194,7 @@ describe("genTestingRecord()", () => {
 
   it("should throw error there is an invalid testTypeCode", () => {
     const invalid: TestingRecord[] = [{
-      ...validTestingRecord[0],
+      ...validPCRTestingRecord[0],
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       testTypeCode: "123456" as any // Invalid test type code
     }];

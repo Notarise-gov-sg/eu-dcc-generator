@@ -136,6 +136,7 @@ describe("Main Helper Functions", () => {
         {
           ci: 'URN:UVCI:01:SG:1ABC-CDE-CDE',
           co: 'SG',
+          nm: "SARS-CoV-2 (COVID-19) RNA panel - Respiratory specimen by NAA with probe detection",
           sc: "2020-09-27T06:15:00Z",
           tc: "MacRitchie Medical Clinic",
           is: "MOH",

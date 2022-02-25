@@ -85,7 +85,7 @@ const vaccinationRecord: VaccinationRecord = {
 - Generate for Vaccination Record
 
 ```javascript
-const payloadJson = euDccGenerator.genEuDccJson(basicDetails, vaccinationRecord);
+const payloadJson = euDccGenerator.genEuDcc(basicDetails, vaccinationRecord);
 const signedPayload = euDccGenerator.signPayload(payloadJsonpayload);
 
 // signedPayload response data
@@ -110,7 +110,7 @@ const signedPayload = euDccGenerator.signPayload(payloadJsonpayload);
 - Generate for Test Record
 
 ```javascript
-const payloadJson = euDccGenerator.genEuDccJson(basicDetails, [testingRecord]);
+const payloadJson = euDccGenerator.genEuDcc(basicDetails, [testingRecord]);
 const signedPayload = euDccGenerator.signPayload(payloadJsonpayload);
 
 // signedPayload response data

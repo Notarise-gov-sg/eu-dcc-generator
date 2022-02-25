@@ -1,7 +1,8 @@
 import { BasicDetails, PatientDetails, TestingRecord, VaccinationRecord } from "../types";
 import { genEuDcc } from "./eu-dcc-generator";
 
-import notarisePdtSingleRecord from "../../fixtures/notarise-examples/pdt-single-record.json";
+import notarisePdtArtSingleRecord from "../../fixtures/notarise-examples/pdt-art-single-record.json";
+import notarisePdtPcrSingleRecord from "../../fixtures/notarise-examples/pdt-pcr-single-record.json";
 import notariseVacSingleRecord from "../../fixtures/notarise-examples/vac-single-record.json";
 import notarisePdtMultiRecord from "../../fixtures/notarise-examples/pdt-multi-record.json";
 
@@ -34,10 +35,21 @@ const basicDetails: BasicDetails = {
   expiryDays: 365
 };
 
-const singleTestingRecord: TestingRecord[] = [
+const singlePCRTestingRecord: TestingRecord[] = [
   {
     testTypeCode: "258500001",
     naatTestName: "SARS-CoV-2 (COVID-19) RNA panel - Respiratory specimen by NAA with probe detection",
+    collectionDateTime: "2020-09-27T06:15:00Z",
+    testResultCode: "260385009",
+    testCenter: "MacRitchie Medical Clinic",
+    testCountry: "SG"
+  }
+];
+
+const singleARTTestingRecord: TestingRecord[] = [
+  {
+    testTypeCode: "697989009",
+    ratTestDeviceCode: "1833",
     collectionDateTime: "2020-09-27T06:15:00Z",
     testResultCode: "260385009",
     testCenter: "MacRitchie Medical Clinic",
@@ -87,9 +99,14 @@ const vaccinationRecord: VaccinationRecord = {
 };
 
 describe("genEuDcc() [Single record]", () => {
-  it("TestingRecord", () => {
-    const singleTestingRecordResult = genEuDcc(basicDetails, singleTestingRecord);
-    expect(singleTestingRecordResult).toStrictEqual(notarisePdtSingleRecord);
+  it("TestingPCRRecord", () => {
+    const singlePCRTestingRecordResult = genEuDcc(basicDetails, singlePCRTestingRecord);
+    expect(singlePCRTestingRecordResult).toStrictEqual(notarisePdtPcrSingleRecord);
+  });
+
+  it("TestingARTRecord", () => {
+    const singleARTTestingRecordResult = genEuDcc(basicDetails, singleARTTestingRecord);
+    expect(singleARTTestingRecordResult).toStrictEqual(notarisePdtArtSingleRecord);
   });
 
   it("VaccinationRecords", () => {

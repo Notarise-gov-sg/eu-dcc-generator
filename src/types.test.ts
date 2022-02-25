@@ -1,9 +1,20 @@
 import { isTestingRecordArray, isVaccinationRecord, TestingRecord, VaccinationRecord } from "./types";
 
-const singleTestingRecord: TestingRecord[] = [
+const singleTestingPCRRecord: TestingRecord[] = [
   {
     testTypeCode: "258500001",
     naatTestName: "SARS-CoV-2 (COVID-19) RNA panel - Respiratory specimen by NAA with probe detection",
+    collectionDateTime: "2020-09-27T06:15:00Z",
+    testResultCode: "260385009",
+    testCenter: "MacRitchie Medical Clinic",
+    testCountry: "SG"
+  }
+];
+
+const singleTestingARTRecord: TestingRecord[] = [
+  {
+    testTypeCode: "697989009",
+    ratTestDeviceCode: "1833",
     collectionDateTime: "2020-09-27T06:15:00Z",
     testResultCode: "260385009",
     testCenter: "MacRitchie Medical Clinic",
@@ -34,13 +45,22 @@ const vaccinationRecord: VaccinationRecord = {
 };
 
 describe("types", () => {
-  it("should pass TestingRecord[] type check", () => {
-    expect(isTestingRecordArray(singleTestingRecord)).toBe(true);
+  it("should pass PCR TestingRecord[] type check", () => {
+    expect(isTestingRecordArray(singleTestingPCRRecord)).toBe(true);
   });
 
-  it("should fail TestingRecord[] type check", () => {
-    expect(isTestingRecordArray([{ ...singleTestingRecord[0], collectionDateTime: undefined }])).toBe(false);
-    expect(isTestingRecordArray([{ ...singleTestingRecord[0], foo: "bar" }])).toBe(false);
+  it("should fail PCR TestingRecord[] type check", () => {
+    expect(isTestingRecordArray([{ ...singleTestingPCRRecord[0], collectionDateTime: undefined }])).toBe(false);
+    expect(isTestingRecordArray([{ ...singleTestingPCRRecord[0], foo: "bar" }])).toBe(false);
+  });
+
+  it("should pass ART TestingRecord[] type check", () => {
+    expect(isTestingRecordArray(singleTestingARTRecord)).toBe(true);
+  });
+
+  it("should fail ART TestingRecord[] type check", () => {
+    expect(isTestingRecordArray([{ ...singleTestingARTRecord[0], collectionDateTime: undefined }])).toBe(false);
+    expect(isTestingRecordArray([{ ...singleTestingARTRecord[0], foo: "bar" }])).toBe(false);
   });
 
   it("should pass VaccinationRecord[] type check", () => {

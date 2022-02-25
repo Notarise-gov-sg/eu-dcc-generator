@@ -113,7 +113,7 @@ export const euAcceptedTestTypeCodes = ["LP6464-4", "LP217198-3"];
 export interface TestingRecord {
   testTypeCode: string;
   naatTestName?: string;
-  ratTestName?: string;
+  ratTestDeviceCode?: string; //use device code from here https://github.com/ehn-dcc-development/ehn-dcc-valuesets/blob/main/test-manf.json
   collectionDateTime: string;
   testResultCode: string;
   testCenter: string;
@@ -134,8 +134,8 @@ export function isTestingRecordArray(x: any): x is TestingRecord[] {
     const inputKey = [...keys];
     const _keys = Object.keys(obj);
     if(obj.naatTestName) inputKey.push("naatTestName");
-    if(obj.ratTestName) inputKey.push("ratTestName");
-    return (obj.naatTestName || obj.ratTestName) && arrayEquals(_keys.sort(), inputKey.sort()) && _keys.every((k) => typeof obj[k] === "string");
+    if(obj.ratTestDeviceCode) inputKey.push("ratTestDeviceCode");
+    return (obj.naatTestName || obj.ratTestDeviceCode) && arrayEquals(_keys.sort(), inputKey.sort()) && _keys.every((k) => typeof obj[k] === "string");
   });
 }
 

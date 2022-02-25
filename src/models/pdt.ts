@@ -1,3 +1,4 @@
+import { EuTestRecord } from "../index";
 import { notariseAcceptedTestResultCodes, euAcceptedTestResultCodes, notariseAcceptedTestTypeCodes, euAcceptedTestTypeCodes, TestingRecord, TestRecord } from "../types";
 
 /**
@@ -78,18 +79,25 @@ export const genTestingRecord = (testingRecords: TestingRecord[], expiryDateTime
         : testingRecord.testTypeCode === "LP217198-3"
         ? "ART"
         : "";
+    const euTestRecord: EuTestRecord = {
+      tg: targetDisease,
+      tt: testingRecord.testTypeCode,
+      sc: testingRecord.collectionDateTime,
+      tr: testingRecord.testResultCode,
+      tc: testingRecord.testCenter,
+      co: testingRecord.testCountry,
+      is: issuerName,
+      ci: UniqueCertificateId,
+    }
+    if(testTypeName === "PCR"){
+      euTestRecord.nm = testingRecord.naatTestName;
+    }
+    else if(testTypeName === "ART") {
+      euTestRecord.ma = testingRecord.ratTestDeviceCode;
+    }
     return {
       type: testTypeName,
-      euTestRecord: {
-        tg: targetDisease,
-        tt: testingRecord.testTypeCode,
-        sc: testingRecord.collectionDateTime,
-        tr: testingRecord.testResultCode,
-        tc: testingRecord.testCenter,
-        co: testingRecord.testCountry,
-        is: issuerName,
-        ci: UniqueCertificateId,
-      },
+      euTestRecord,
       expiryDateTime
     }
   });
