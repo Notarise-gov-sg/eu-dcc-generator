@@ -130,7 +130,7 @@ export function isTestingRecordArray(x: any): x is TestingRecord[] {
     "testTypeCode"
   ];
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  return x.every((obj: any) => {
+  return Array.isArray(x) && x.every((obj: any) => {
     const inputKey = [...keys];
     const _keys = Object.keys(obj);
     if(obj.naatTestName) inputKey.push("naatTestName");
@@ -157,7 +157,7 @@ export function isRecoveryRecordArray(x: any): x is RecoveryRecord[] {
     "testValidUntil"
   ];
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  return x.every((obj: any) => {
+  return Array.isArray(x) && x.every((obj: any) => {
     const _keys = Object.keys(obj);
     return arrayEquals(_keys.sort(), keys.sort()) && _keys.every((k) => typeof obj[k] === "string");
   });

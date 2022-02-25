@@ -44,11 +44,23 @@ const basicDetails: BasicDetails = {
   expiryDays: 365
 };
 
-// Notarise PDT (Testing Record)
-const singleTestingRecord: TestingRecord[] = [
+// Notarise PDT (PCR Testing Record)
+const singlePCRTestingRecord: TestingRecord[] = [
   {
-    testTypeCode: "258500001",
+    testTypeCode: "94531-1",
     naatTestName: "SARS-CoV-2 (COVID-19) RNA panel - Respiratory specimen by NAA with probe detection",
+    collectionDateTime: "2020-09-27T06:15:00Z",
+    testResultCode: "260385009",
+    testCenter: "MacRitchie Medical Clinic",
+    testCountry: "SG"
+  }
+];
+
+// Notarise PDT (ART Testing Record)
+const singleARTTestingRecord: TestingRecord[] = [
+  {
+    testTypeCode: "97097-0",
+    ratTestDeviceCode: "1833",
     collectionDateTime: "2020-09-27T06:15:00Z",
     testResultCode: "260385009",
     testCenter: "MacRitchie Medical Clinic",

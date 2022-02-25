@@ -52,6 +52,7 @@ describe("types", () => {
   it("should fail PCR TestingRecord[] type check", () => {
     expect(isTestingRecordArray([{ ...singleTestingPCRRecord[0], collectionDateTime: undefined }])).toBe(false);
     expect(isTestingRecordArray([{ ...singleTestingPCRRecord[0], foo: "bar" }])).toBe(false);
+    expect(isTestingRecordArray(singleTestingPCRRecord[0])).toBe(false);
   });
 
   it("should pass ART TestingRecord[] type check", () => {
