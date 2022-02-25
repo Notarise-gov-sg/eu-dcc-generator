@@ -17,9 +17,8 @@ const acceptedTestResultCodes = [...notariseAcceptedTestResultCodes, ...euAccept
  * LP6464-4 (Nucleic acid amplification with probe detection) / LP217198-3 (Rapid immunoassay)
  */
  const euNotariseToDccTestTypeCode = {
-   "697989009": "LP217198-3", // ART -> Rapid immunoassay
-   "258500001": "LP6464-4", // PCR NASAL -> Nucleic acid amplification with probe detection
-   "119342007": "LP6464-4", // PCR SALIVA -> Nucleic acid amplification with probe detection
+   "97097-0": "LP217198-3", // Notarise ART [Loinc Code] -> EU RAT (Rapid immunoassay) [Loinc Code]
+   "94531-1": "LP6464-4", // Notarise PCR [Loinc Code] -> EU NAAT (Nucleic acid amplification with probe detection) [Loinc Code]
  };
 
 const acceptedTestTypeCodes = [...notariseAcceptedTestTypeCodes, ...euAcceptedTestTypeCodes];

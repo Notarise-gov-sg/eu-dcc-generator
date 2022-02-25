@@ -98,9 +98,9 @@ export const euAcceptedTestResultCodes = ["260415000", "260373001"];
 
 /**
  * What Notarise uses:
- * ART (697989009) / PCR_NASAL (258500001) / PCR_SALIVA (119342007)
+ * ART (97097-0) / PCR (94531-1)
  */
-export const notariseAcceptedTestTypeCodes = ["697989009", "258500001", "119342007"];
+export const notariseAcceptedTestTypeCodes = ["97097-0", "94531-1"];
 
 /**
 * What EU DCC uses:

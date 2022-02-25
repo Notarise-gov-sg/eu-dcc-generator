@@ -37,7 +37,7 @@ const basicDetails: BasicDetails = {
 
 const singlePCRTestingRecord: TestingRecord[] = [
   {
-    testTypeCode: "258500001",
+    testTypeCode: "94531-1",
     naatTestName: "SARS-CoV-2 (COVID-19) RNA panel - Respiratory specimen by NAA with probe detection",
     collectionDateTime: "2020-09-27T06:15:00Z",
     testResultCode: "260385009",
@@ -48,7 +48,7 @@ const singlePCRTestingRecord: TestingRecord[] = [
 
 const singleARTTestingRecord: TestingRecord[] = [
   {
-    testTypeCode: "697989009",
+    testTypeCode: "97097-0",
     ratTestDeviceCode: "1833",
     collectionDateTime: "2020-09-27T06:15:00Z",
     testResultCode: "260385009",
@@ -59,7 +59,7 @@ const singleARTTestingRecord: TestingRecord[] = [
 
 const multiTestingRecord: TestingRecord[] =   [
   {
-    testTypeCode: "258500001",
+    testTypeCode: "94531-1",
     naatTestName: "SARS-CoV-2 (COVID-19) RNA panel - Respiratory specimen by NAA with probe detection",
     collectionDateTime: "2020-09-27T06:15:00Z",
     testResultCode: "260385009",
@@ -67,7 +67,7 @@ const multiTestingRecord: TestingRecord[] =   [
     testCountry: "SG"
   },
   {
-    testTypeCode: "258500001",
+    testTypeCode: "94531-1",
     naatTestName: "SARS-CoV-2 (COVID-19) RNA panel - Respiratory specimen by NAA with probe detection",
     collectionDateTime: "2020-09-27T06:15:00Z",
     testResultCode: "260385009",

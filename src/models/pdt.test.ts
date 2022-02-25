@@ -3,7 +3,7 @@ import { TestingRecord } from "../types";
 
 const validPCRTestingRecord: TestingRecord[] = [
   {
-    testTypeCode: "258500001",
+    testTypeCode: "94531-1",
     naatTestName: "SARS-CoV-2 (COVID-19) RNA panel - Respiratory specimen by NAA with probe detection",
     collectionDateTime: "2020-09-27T06:15:00Z",
     testResultCode: "260385009",
@@ -14,7 +14,7 @@ const validPCRTestingRecord: TestingRecord[] = [
 
 const validARTTestingRecord: TestingRecord[] = [
   {
-    testTypeCode: "258500001",
+    testTypeCode: "97097-0",
     ratTestDeviceCode: "1833",
     collectionDateTime: "2020-09-27T06:15:00Z",
     testResultCode: "260385009",
@@ -128,38 +128,8 @@ describe("genTestingRecord()", () => {
     ]);
   });
 
-  it("should produce valid TestingRecord for PCR Saliva record", () => {
-    const valid: TestingRecord[] = [{
-      ...validPCRTestingRecord[0],
-      testTypeCode: "119342007", // The correct PCR Saliva
-    }];
-
-    expect(() => genTestingRecord(valid, "2023-02-22T00:00:00.000Z", "MOH", "abc-adv-cde")).not.toThrowError();
-    expect(genTestingRecord(valid, "2023-02-22T00:00:00.000Z", "MOH", "abc-adv-cde")).toStrictEqual([
-      {
-        euTestRecord: {
-            ci: "URN:UVCI:01:SG:1ABC-ADV-CDE",
-            co: "SG",
-            is: "MOH",
-            nm: "SARS-CoV-2 (COVID-19) RNA panel - Respiratory specimen by NAA with probe detection",
-            sc: "2020-09-27T06:15:00Z",
-            tc: "MacRitchie Medical Clinic",
-            tg: "840539006",
-            tr: "260415000", // The correct "Not detected" code
-            tt: "LP6464-4",
-        },
-        expiryDateTime: "2023-02-22T00:00:00.000Z",
-        type: "PCR",
-      }
-    ]);
-  });
-
   it("should produce valid TestingRecord for ART record", () => {
-    const valid: TestingRecord[] = [{
-      ...validARTTestingRecord[0],
-      testTypeCode: "697989009", // The correct ART [snomed]
-    }];
-
+    const valid: TestingRecord[] = [validARTTestingRecord[0]];
     expect(() => genTestingRecord(valid, "2023-02-22T00:00:00.000Z", "MOH", "abc-adv-cde")).not.toThrowError();
     expect(genTestingRecord(valid, "2023-02-22T00:00:00.000Z", "MOH", "abc-adv-cde")).toStrictEqual([
       {
@@ -200,7 +170,7 @@ describe("genTestingRecord()", () => {
     }];
 
     expect(() => genTestingRecord(invalid, "2023-02-22T00:00:00.000Z", "MOH", "abc-adv-cde")).toThrowError(
-      `Invalid testTypeCode (123456) received. Should be one of these values: ["697989009","258500001","119342007","LP6464-4","LP217198-3"]`
+      `Invalid testTypeCode (123456) received. Should be one of these values: ["97097-0","94531-1","LP6464-4","LP217198-3"]`
     );
   });
 });
