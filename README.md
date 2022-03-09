@@ -47,8 +47,8 @@ const basicDetails: BasicDetails = {
 // Notarise PDT (PCR Testing Record)
 const singlePCRTestingRecord: TestingRecord[] = [
   {
-    testTypeCode: "94531-1",
-    naatTestName: "SARS-CoV-2 (COVID-19) RNA panel - Respiratory specimen by NAA with probe detection",
+    testTypeCode: "94309-2",
+    naatTestName: "SARS-CoV-2 (COVID-19) RNA [Presence] in Specimen by NAA with probe detection",
     collectionDateTime: "2020-09-27T06:15:00Z",
     testResultCode: "260385009",
     testCenter: "MacRitchie Medical Clinic",

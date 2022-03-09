@@ -19,6 +19,7 @@ const acceptedTestResultCodes = [...notariseAcceptedTestResultCodes, ...euAccept
  const euNotariseToDccTestTypeCode = {
    "97097-0": "LP217198-3", // Notarise ART [Loinc Code] -> EU RAT (Rapid immunoassay) [Loinc Code]
    "94531-1": "LP6464-4", // Notarise PCR [Loinc Code] -> EU NAAT (Nucleic acid amplification with probe detection) [Loinc Code]
+   "94309-2": "LP6464-4", // Notarise PCR (Recommended) [Loinc Code] -> EU NAAT (Nucleic acid amplification with probe detection) [Loinc Code]
  };
 
 const acceptedTestTypeCodes = [...notariseAcceptedTestTypeCodes, ...euAcceptedTestTypeCodes];

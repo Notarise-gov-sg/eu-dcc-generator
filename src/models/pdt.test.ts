@@ -50,6 +50,32 @@ describe("genTestingRecord()", () => {
     ]);
   });
 
+  it("should produce valid TestingRecord PCR for Negative record using Recommended Test Type Code", () => {
+    const valid: TestingRecord[] = [{
+      ...validPCRTestingRecord[0],
+      testTypeCode: "94309-2", // Recommended code
+    }];
+
+    expect(() => genTestingRecord(valid, "2023-02-22T00:00:00.000Z", "MOH", "abc-adv-cde")).not.toThrowError();
+    expect(genTestingRecord(valid, "2023-02-22T00:00:00.000Z", "MOH", "abc-adv-cde")).toStrictEqual([
+      {
+        euTestRecord: {
+            ci: "URN:UVCI:01:SG:1ABC-ADV-CDE",
+            co: "SG",
+            is: "MOH",
+            nm: "SARS-CoV-2 (COVID-19) RNA panel - Respiratory specimen by NAA with probe detection",
+            sc: "2020-09-27T06:15:00Z",
+            tc: "MacRitchie Medical Clinic",
+            tg: "840539006",
+            tr: "260415000",
+            tt: "LP6464-4", // The correct "NAAT" code
+        },
+        expiryDateTime: "2023-02-22T00:00:00.000Z",
+        type: "PCR",
+      }
+    ]);
+  });
+
   it("should produce valid TestingRecord PCR for Negative record using EU DCC Test Result Code", () => {
     const valid: TestingRecord[] = [{
       ...validPCRTestingRecord[0],
@@ -170,7 +196,7 @@ describe("genTestingRecord()", () => {
     }];
 
     expect(() => genTestingRecord(invalid, "2023-02-22T00:00:00.000Z", "MOH", "abc-adv-cde")).toThrowError(
-      `Invalid testTypeCode (123456) received. Should be one of these values: ["97097-0","94531-1","LP6464-4","LP217198-3"]`
+      `Invalid testTypeCode (123456) received. Should be one of these values: ["97097-0","94531-1","94309-2","LP6464-4","LP217198-3"]`
     );
   });
 });
