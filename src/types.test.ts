@@ -3,7 +3,7 @@ import { isTestingRecordArray, isVaccinationRecord, TestingRecord, VaccinationRe
 const singleTestingPCRRecord: TestingRecord[] = [
   {
     testTypeCode: "258500001",
-    naatTestName: "SARS-CoV-2 (COVID-19) RNA panel - Respiratory specimen by NAA with probe detection",
+    naatTestName: "SARS-CoV-2 (COVID-19) RNA [Presence] in Specimen by NAA with probe detection",
     collectionDateTime: "2020-09-27T06:15:00Z",
     testResultCode: "260385009",
     testCenter: "MacRitchie Medical Clinic",
