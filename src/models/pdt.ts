@@ -90,7 +90,7 @@ export const genTestingRecord = (testingRecords: TestingRecord[], expiryDateTime
       ci: UniqueCertificateId,
     }
     if(testTypeName === "PCR"){
-      euTestRecord.nm = testingRecord.naatTestName;
+      euTestRecord.nm = testingRecord.naatTestName?.substring(0,80);
     }
     else if(testTypeName === "ART") {
       euTestRecord.ma = testingRecord.ratTestDeviceCode;

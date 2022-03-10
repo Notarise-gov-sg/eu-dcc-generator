@@ -4,7 +4,7 @@ import { TestingRecord } from "../types";
 const validPCRTestingRecord: TestingRecord[] = [
   {
     testTypeCode: "94531-1",
-    naatTestName: "SARS-CoV-2 (COVID-19) RNA panel - Respiratory specimen by NAA with probe detection",
+    naatTestName: "SARS-CoV-2 (COVID-19) RNA [Presence] in Specimen by NAA with probe detection",
     collectionDateTime: "2020-09-27T06:15:00Z",
     testResultCode: "260385009",
     testCenter: "MacRitchie Medical Clinic",
@@ -24,6 +24,32 @@ const validARTTestingRecord: TestingRecord[] = [
 ];
 
 describe("genTestingRecord()", () => {
+  it("should produce valid TestingRecord PCR for long test name", () => {
+    const valid: TestingRecord[] = [{
+      ...validPCRTestingRecord[0],
+      naatTestName: "SARS-CoV-2 (COVID-19) RNA panel - Respiratory specimen by NAA with probe detection", // long test name more than 80 chars
+    }];
+
+    expect(() => genTestingRecord(valid, "2023-02-22T00:00:00.000Z", "MOH", "abc-adv-cde")).not.toThrowError();
+    expect(genTestingRecord(valid, "2023-02-22T00:00:00.000Z", "MOH", "abc-adv-cde")).toStrictEqual([
+      {
+        euTestRecord: {
+            ci: "URN:UVCI:01:SG:1ABC-ADV-CDE",
+            co: "SG",
+            is: "MOH",
+            nm: "SARS-CoV-2 (COVID-19) RNA panel - Respiratory specimen by NAA with probe detecti", // cut off only 80 chars
+            sc: "2020-09-27T06:15:00Z",
+            tc: "MacRitchie Medical Clinic",
+            tg: "840539006",
+            tr: "260415000",
+            tt: "LP6464-4",
+        },
+        expiryDateTime: "2023-02-22T00:00:00.000Z",
+        type: "PCR",
+      }
+    ]);
+  });
+
   it("should produce valid TestingRecord PCR for Negative record", () => {
     const valid: TestingRecord[] = [{
       ...validPCRTestingRecord[0],
@@ -37,7 +63,7 @@ describe("genTestingRecord()", () => {
             ci: "URN:UVCI:01:SG:1ABC-ADV-CDE",
             co: "SG",
             is: "MOH",
-            nm: "SARS-CoV-2 (COVID-19) RNA panel - Respiratory specimen by NAA with probe detection",
+            nm: "SARS-CoV-2 (COVID-19) RNA [Presence] in Specimen by NAA with probe detection",
             sc: "2020-09-27T06:15:00Z",
             tc: "MacRitchie Medical Clinic",
             tg: "840539006",
@@ -63,7 +89,7 @@ describe("genTestingRecord()", () => {
             ci: "URN:UVCI:01:SG:1ABC-ADV-CDE",
             co: "SG",
             is: "MOH",
-            nm: "SARS-CoV-2 (COVID-19) RNA panel - Respiratory specimen by NAA with probe detection",
+            nm: "SARS-CoV-2 (COVID-19) RNA [Presence] in Specimen by NAA with probe detection",
             sc: "2020-09-27T06:15:00Z",
             tc: "MacRitchie Medical Clinic",
             tg: "840539006",
@@ -89,7 +115,7 @@ describe("genTestingRecord()", () => {
             ci: "URN:UVCI:01:SG:1ABC-ADV-CDE",
             co: "SG",
             is: "MOH",
-            nm: "SARS-CoV-2 (COVID-19) RNA panel - Respiratory specimen by NAA with probe detection",
+            nm: "SARS-CoV-2 (COVID-19) RNA [Presence] in Specimen by NAA with probe detection",
             sc: "2020-09-27T06:15:00Z",
             tc: "MacRitchie Medical Clinic",
             tg: "840539006",
@@ -115,7 +141,7 @@ describe("genTestingRecord()", () => {
             ci: "URN:UVCI:01:SG:1ABC-ADV-CDE",
             co: "SG",
             is: "MOH",
-            nm: "SARS-CoV-2 (COVID-19) RNA panel - Respiratory specimen by NAA with probe detection",
+            nm: "SARS-CoV-2 (COVID-19) RNA [Presence] in Specimen by NAA with probe detection",
             sc: "2020-09-27T06:15:00Z",
             tc: "MacRitchie Medical Clinic",
             tg: "840539006",
@@ -141,7 +167,7 @@ describe("genTestingRecord()", () => {
             ci: "URN:UVCI:01:SG:1ABC-ADV-CDE",
             co: "SG",
             is: "MOH",
-            nm: "SARS-CoV-2 (COVID-19) RNA panel - Respiratory specimen by NAA with probe detection",
+            nm: "SARS-CoV-2 (COVID-19) RNA [Presence] in Specimen by NAA with probe detection",
             sc: "2020-09-27T06:15:00Z",
             tc: "MacRitchie Medical Clinic",
             tg: "840539006",
