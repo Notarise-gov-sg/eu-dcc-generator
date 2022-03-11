@@ -66,10 +66,10 @@ describe("types", () => {
 
   it("should pass VaccinationRecord[] type check", () => {
     expect(isVaccinationRecord(vaccinationRecord)).toBe(true);
+    expect(isVaccinationRecord({...vaccinationRecord, effectiveDate: undefined})).toBe(true);
   });
 
   it("should fail VaccinationRecord[] type check", () => {
-    expect(isTestingRecordArray([{ ...vaccinationRecord[0], effectiveDate: undefined }])).toBe(false);
-    expect(isTestingRecordArray([{ ...vaccinationRecord[0], foo: "bar" }])).toBe(false);
+    expect(isVaccinationRecord([{ ...vaccinationRecord[0], foo: "bar" }])).toBe(false);
   });
 });

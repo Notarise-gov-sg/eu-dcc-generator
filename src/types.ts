@@ -78,7 +78,7 @@ export function isVaccinationRecord(x: any): x is VaccinationRecord {
     "vaccinationCountry"
   ];
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  return x.effectiveDate && (x.vaccinations).every((obj: any) => {
+  return Array.isArray(x.vaccinations) && (x.vaccinations).every((obj: any) => {
     const _keys = Object.keys(obj);
     return arrayEquals(_keys.sort(), keys.sort()) && _keys.every((k) => typeof obj[k] === "string");
   });
