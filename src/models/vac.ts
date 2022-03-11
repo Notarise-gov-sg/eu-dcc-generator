@@ -9,14 +9,14 @@ import * as sddInformations from "../static/SDD.mapping.json";
  */
 export const genVaccinationRecord = (vaccinationRecord: VaccinationRecord, expiryDateTime: string, issuerName: string, reference: string): VaccineRecord[] => {
 
-  /* assign primary series of vaccination records by filtering `vaccinationDateTime` is before `effectiveDate` */
+  /* assign primary series of vaccination records by filtering `vaccinationDateTime` is before `effectiveDate` or without `effectiveDate` */
   const primaryVaccinations: Vaccination[] = (vaccinationRecord.vaccinations).filter((vaccination) =>
-    isBefore(parseISO(vaccination.vaccinationDateTime), parseISO(vaccinationRecord.effectiveDate))
+    vaccinationRecord.effectiveDate? isBefore(parseISO(vaccination.vaccinationDateTime), parseISO(vaccinationRecord.effectiveDate)): true
   );
 
-  /* set`isBooster` flag in vaccination records when `vaccinationDateTime` is after CMB `effectiveDate` */
+  /* set`isBooster` flag as `true` in vaccination records when `vaccinationDateTime` is after CMB `effectiveDate` */
   const euVaccinations: Vaccination[] = (vaccinationRecord.vaccinations).map((vaccination) => {
-    vaccination.isBooster = isAfter(parseISO(vaccination.vaccinationDateTime), parseISO(vaccinationRecord.effectiveDate));
+    vaccination.isBooster = vaccinationRecord.effectiveDate? isAfter(parseISO(vaccination.vaccinationDateTime), parseISO(vaccinationRecord.effectiveDate)): false;
     return vaccination;
   });
 

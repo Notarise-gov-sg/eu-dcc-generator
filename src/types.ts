@@ -64,7 +64,7 @@ export interface Vaccination {
 
 export interface VaccinationRecord {
   vaccinations: Vaccination[];
-  effectiveDate: string;
+  effectiveDate?: string;
 }
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
