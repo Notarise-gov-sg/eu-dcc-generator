@@ -107,14 +107,16 @@ const signedPayload = euDccGenerator.signPayload(payloadJsonpayload);
     vaccineCode: '3339641000133109',
     doseNumber: 1,
     expiryDateTime: '2023-02-23T01:00:01.098Z',
-    qr: 'HC1:.....'
+    qr: 'HC1:.....',
+    appleCovidCardUrl: 'https://redirect.health.apple.com/EU-DCC/#...'
   },
   {
     certificate: {...}
     vaccineCode: '3339641000133109',
     doseNumber: 2,
     expiryDateTime: '2023-02-23T01:00:01.098Z',
-    qr: 'HC1:.....'
+    qr: 'HC1:.....',
+    appleCovidCardUrl: 'https://redirect.health.apple.com/EU-DCC/#...'
   }
 ]
 ```
@@ -131,7 +133,8 @@ const signedPayload = euDccGenerator.signPayload(payloadJsonpayload);
     certificate: {...}
     type: 'PCR',
     expiryDateTime: '2023-02-23T01:00:01.098Z',
-    qr: 'HC1:.....'
+    qr: 'HC1:.....',
+    appleCovidCardUrl: 'https://redirect.health.apple.com/EU-DCC/#...'
   }
 ]
 ```

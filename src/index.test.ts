@@ -77,6 +77,7 @@ describe("Main Helper Functions", () => {
       nam: { fn: "Tan", fnt: "TAN", gn: "Chen Chen", gnt: "CHEN<CHEN" },
       ver: '1.3.0'
     });
+    expect(signedPayload[0].appleCovidCardUrl).toMatch(/https:\/\/redirect.health.apple.com\/EU-DCC\/#/);
 
     const secondVaccineQr = await debug(signedPayload[1].qr);
     expect(await parseCWT(secondVaccineQr.value[2])).toStrictEqual({
@@ -104,6 +105,7 @@ describe("Main Helper Functions", () => {
       nam: { fn: "Tan", fnt: "TAN", gn: "Chen Chen", gnt: "CHEN<CHEN" },
       ver: '1.3.0'
     });
+    expect(signedPayload[1].appleCovidCardUrl).toMatch(/https:\/\/redirect.health.apple.com\/EU-DCC\/#/);
   });
   it("should be able to decode and verify a signed test cert payload", async () => {
     const basicDetails: BasicDetails = {
@@ -149,5 +151,6 @@ describe("Main Helper Functions", () => {
       nam: { fn: "Tan", fnt: "TAN", gn: "Chen Chen", gnt: "CHEN<CHEN" },
       ver: '1.3.0'
     });
+    expect(signedPayload[0].appleCovidCardUrl).toMatch(/https:\/\/redirect.health.apple.com\/EU-DCC\/#/);
   });
 });

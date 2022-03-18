@@ -2,6 +2,8 @@ import { signAndPack } from "@pathcheck/dcc-sdk";
 import { VacTemplate,  PdtTemplate, RecTemplate, VacCertificate, PdtCertificate, RecCertificate} from "./types";
 import { genEuDcc } from "./models/eu-dcc-generator";
 
+const APPLE_URL_PREFIX = `https://redirect.health.apple.com/EU-DCC/#`;
+
 /* 
   Implement this function for set specific expiry datetime. 
   `makeCWT` function in `@pathcheck/dcc-sdk` package only support to set expiry month.   
@@ -35,7 +37,7 @@ const signPayload = async (euHealthCerts: VacTemplate[] | PdtTemplate[] | RecTem
         publicKey,
         privateKey
       );
-      euHealthCertsQr.push({ ...euHealthCert, qr: qrData});
+      euHealthCertsQr.push({ ...euHealthCert, qr: qrData, appleCovidCardUrl: APPLE_URL_PREFIX + encodeURIComponent(qrData.slice(4)) });
     })
   );
   return euHealthCertsQr;
