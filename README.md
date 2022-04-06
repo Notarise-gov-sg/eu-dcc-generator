@@ -90,6 +90,16 @@ const vaccinationRecord: VaccinationRecord = {
   ],
   effectiveDate: "2021-03-17"
 };
+
+// Notarise Recovery (Recovery Record)
+const validRecoveryRecord: RecoveryRecord[] = [
+  {
+    firstPositiveTestDate: "2022-01-01T00:00:00.000Z",
+    testValidFrom: "2022-01-08T00:00:00.000Z",
+    testValidUntil: "2022-06-30T00:00:00.000Z",
+    testCountry: "SG"
+  }
+];
 ```
 
 ### 3. Generate Json and sign the payload
