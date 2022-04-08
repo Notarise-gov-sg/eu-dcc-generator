@@ -41,7 +41,7 @@ const basicDetails: BasicDetails = {
   patientDetails,
   reference: "abc-cde-cde",
   issuerName: "MOH",
-  expiryDays: 365
+  expiryDaysOrDate: 365
 };
 
 // Notarise PDT (PCR Testing Record)

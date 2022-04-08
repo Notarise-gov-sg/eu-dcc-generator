@@ -32,7 +32,7 @@ const basicDetails: BasicDetails = {
   patientDetails,
   reference: "abc-cde-cde",
   issuerName: "MOH",
-  expiryDays: 365
+  expiryDaysOrDate: 365
 };
 
 const singlePCRTestingRecord: TestingRecord[] = [
@@ -98,6 +98,15 @@ const vaccinationRecord: VaccinationRecord = {
   effectiveDate: "2021-03-17"
 };
 
+describe("genEuDcc() invalid", () => {
+  it("Invalid Expiry Record", () => {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    expect(() => genEuDcc({...basicDetails, expiryDaysOrDate: "test" as any}, singlePCRTestingRecord)).toThrowError(
+      `Invalid expiryDaysOrDate (test) received. Should be number of days or specific date object.`
+    );
+  });
+});
+
 describe("genEuDcc() [Single record]", () => {
   it("TestingPCRRecord", () => {
     const singlePCRTestingRecordResult = genEuDcc(basicDetails, singlePCRTestingRecord);
@@ -108,7 +117,6 @@ describe("genEuDcc() [Single record]", () => {
     const singleARTTestingRecordResult = genEuDcc(basicDetails, singleARTTestingRecord);
     expect(singleARTTestingRecordResult).toStrictEqual(notarisePdtArtSingleRecord);
   });
-
   it("VaccinationRecords", () => {
     const singleVaccinationRecord = genEuDcc(basicDetails, vaccinationRecord);
     expect(singleVaccinationRecord).toStrictEqual(notariseVacSingleRecord);
@@ -117,7 +125,7 @@ describe("genEuDcc() [Single record]", () => {
 
 describe("genEuDcc() [Multi record]", () => {
   it("TestingRecord", () => {
-    const multiTestingRecordResult = genEuDcc({ ...basicDetails, expiryDays: 7}, multiTestingRecord);
+    const multiTestingRecordResult = genEuDcc({ ...basicDetails, expiryDaysOrDate: 7}, multiTestingRecord);
     expect(multiTestingRecordResult).toStrictEqual(notarisePdtMultiRecord);
   });
 });
