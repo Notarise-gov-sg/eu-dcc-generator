@@ -26,10 +26,20 @@ export function genEuDcc(
   basicDetails: BasicDetails,
   record: VaccinationRecord | TestingRecord[] | RecoveryRecord[]
 ): VacTemplate[] | PdtTemplate[] | RecTemplate[] {
-  const { reference, issuerName, expiryDays, patientDetails } = basicDetails;
+  const { reference, issuerName, expiryDaysOrDate, patientDetails } = basicDetails;
+  if (typeof expiryDaysOrDate !== "number" && expiryDaysOrDate instanceof Date !== true) {
+    throw new Error(
+      `Invalid expiryDaysOrDate (${expiryDaysOrDate}) received. Should be number of days or specific date object.`
+    );
+  }
   const { nam, dob, meta } = genPatientDetails(patientDetails);
-  const expiryDateTime = new Date();
-  expiryDateTime.setDate(expiryDateTime.getDate() + expiryDays);
+  let expiryDateTime = new Date();
+  if(expiryDaysOrDate instanceof Date){
+    expiryDateTime = expiryDaysOrDate;
+  }
+  else {
+    expiryDateTime.setDate(expiryDateTime.getDate() + expiryDaysOrDate);
+  }
 
   const baseTemplate: GenericEuDccTemplate = {
     ver: "1.3.0",

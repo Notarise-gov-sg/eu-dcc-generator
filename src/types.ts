@@ -224,6 +224,6 @@ export interface RecTemplate {
 export interface BasicDetails {
   reference: string;
   issuerName: string;
-  expiryDays: number;
+  expiryDaysOrDate: number | Date;
   patientDetails: PatientDetails;
 }

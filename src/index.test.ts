@@ -1,6 +1,6 @@
 import { parseCWT, debug } from "@pathcheck/dcc-sdk";
 import EuDcc from "./index";
-import { BasicDetails, PatientDetails, TestingRecord, VaccinationRecord } from "./types";
+import { BasicDetails, PatientDetails, RecoveryRecord, TestingRecord, VaccinationRecord } from "./types";
 
 const PUBLIC_KEY_PEM = '-----BEGIN CERTIFICATE-----\nMIIBYDCCAQYCEQCAG8uscdLb0ppaneNN5sB7MAoGCCqGSM49BAMCMDIxIzAhBgNV\nBAMMGk5hdGlvbmFsIENTQ0Egb2YgRnJpZXNsYW5kMQswCQYDVQQGEwJGUjAeFw0y\nMTA0MjcyMDQ3MDVaFw0yNjAzMTIyMDQ3MDVaMDYxJzAlBgNVBAMMHkRTQyBudW1i\nZXIgd29ya2VyIG9mIEZyaWVzbGFuZDELMAkGA1UEBhMCRlIwWTATBgcqhkjOPQIB\nBggqhkjOPQMBBwNCAARkJeqyO85dyR+UrQ5Ey8EdgLyf9NtsCrwORAj6T68/elL1\n9aoISQDbzaNYJjdD77XdHtd+nFGTQVpB88wPTwgbMAoGCCqGSM49BAMCA0gAMEUC\nIQDvDacGFQO3tuATpoqf40CBv09nfglL3wh5wBwA1uA7lAIgZ4sOK2iaaTsFNqEN\nAF7zi+d862ePRQ9Lwymr7XfwVm0=\n-----END CERTIFICATE-----';
 const PRIVATE_KEY_P8 = '-----BEGIN PRIVATE KEY-----\nMIGHAgEAMBMGByqGSM49AgEGCCqGSM49AwEHBG0wawIBAQQgZgp3uylFeCIIXozb\nZkCkSNr4DcLDxplZ1ax/u7ndXqahRANCAARkJeqyO85dyR+UrQ5Ey8EdgLyf9Nts\nCrwORAj6T68/elL19aoISQDbzaNYJjdD77XdHtd+nFGTQVpB88wPTwgb\n-----END PRIVATE KEY-----';
@@ -26,7 +26,7 @@ describe("Main Helper Functions", () => {
       patientDetails,
       reference: "abc-cde-cde",
       issuerName: "MOH",
-      expiryDays: 365
+      expiryDaysOrDate: 365
     };
     const vaccinationRecord: VaccinationRecord = {
       vaccinations: [
@@ -112,7 +112,7 @@ describe("Main Helper Functions", () => {
       patientDetails,
       reference: "abc-cde-cde",
       issuerName: "MOH",
-      expiryDays: 7
+      expiryDaysOrDate: 7
     };
     const singleTestingRecord: TestingRecord[] = [
       {
@@ -144,6 +144,49 @@ describe("Main Helper Functions", () => {
           is: "MOH",
           tr: "260415000",
           tt: "LP6464-4",
+          tg: '840539006'
+        }
+      ],
+      dob: '1990-01-15',
+      nam: { fn: "Tan", fnt: "TAN", gn: "Chen Chen", gnt: "CHEN<CHEN" },
+      ver: '1.3.0'
+    });
+    expect(signedPayload[0].appleCovidCardUrl).toMatch(/https:\/\/redirect.health.apple.com\/EU-DCC\/#/);
+  });
+  it("should be able to decode and verify a signed recovery cert with expiry date payload", async () => {
+    const basicDetails: BasicDetails = {
+      patientDetails,
+      reference: "abc-cde-cde",
+      issuerName: "MOH",
+      expiryDaysOrDate: new Date(Date.UTC(2022, 5, 30))
+    };
+    const singleRecoveryRecord: RecoveryRecord[] = [
+      {
+        firstPositiveTestDate: "2022-01-01T00:00:00.000Z",
+        testValidFrom: "2022-01-08T00:00:00.000Z",
+        testValidUntil: "2022-06-30T00:00:00.000Z",
+        testCountry: "SG"
+      }
+    ];
+    const payload = euDcc.genEuDcc(basicDetails, singleRecoveryRecord);
+    const signedPayload = await euDcc.signPayload(payload);
+    expect(signedPayload[0].expiryDateTime).toStrictEqual("2022-06-30T00:00:00.000Z");
+    const testQr = await debug(signedPayload[0].qr);
+    expect(await parseCWT(testQr.value[2])).toStrictEqual({
+      meta: {
+        notarisedOn: "2022-02-26T00:00:00.000Z",
+        passportNumber: "E7831177G",
+        reference: "abc-cde-cde",
+        url: "storedUrl",
+      },
+      r: [
+        {
+          ci: 'URN:UVCI:01:SG:1ABC-CDE-CDE',
+          co: 'SG',
+          df : "2022-01-08T00:00:00.000Z",
+          du : "2022-06-30T00:00:00.000Z",
+          fr : "2022-01-01T00:00:00.000Z",
+          is: "MOH",
           tg: '840539006'
         }
       ],
