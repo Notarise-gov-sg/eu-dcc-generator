@@ -49,6 +49,13 @@ describe("genPatientDetails()", () => {
     `);
   });
 
+  it("should throw error if PatientDetails have invalid dob format", () => {
+    const invalid: PatientDetails = { ...validPatientDetails, dateOfBirth: "12 Feb 2015" };
+    expect(() => genPatientDetails(invalid)).toThrowError(
+      `Invalid dateOfBirth (12 Feb 2015). Should be YYYY-MM-DD or YYYY-MM or YYYY or ISO-8601 format`
+    );
+  });
+
   it("should produce valid PatientDetails with ISO 8601 dob", () => {
     const valid: PatientDetails = { ...validPatientDetails, dateOfBirth: "2022-05-12T16:00:00.000Z" };
     expect(() => genPatientDetails(valid)).not.toThrowError();

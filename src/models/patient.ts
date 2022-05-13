@@ -35,6 +35,19 @@ export const genPatientDetails = ({
     euNam.gnt = convertStandardizationName(firstName);
   }
 
+  if (
+    !dayjs(
+      dateOfBirth,
+      ["YYYY", "YYYY-MM", "YYYY-MM-DD", "YYYY-MM-DDTHH:mm:ss.SSS[Z]"],
+      true
+    ).isValid() ||
+    !dayjs(dateOfBirth).isValid()
+  ) {
+    throw new Error(
+      `Invalid dateOfBirth (${dateOfBirth}). Should be YYYY-MM-DD or YYYY-MM or YYYY or ISO-8601 format`
+    );
+  }
+
   const dob = dayjs(dateOfBirth, ["YYYY", "YYYY-MM", "YYYY-MM-DD"], true).isValid()
   ? dateOfBirth
   : dayjs(dateOfBirth).format("YYYY-MM-DD");

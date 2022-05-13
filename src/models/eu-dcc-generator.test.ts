@@ -8,7 +8,7 @@ import notariseVacSingleRecord from "../../fixtures/notarise-examples/vac-single
 import notarisePdtMultiRecord from "../../fixtures/notarise-examples/pdt-multi-record.json";
 
 beforeEach(() => {
-  MockDate.set('2022-01-01');
+  MockDate.set(new Date("2022-01-01T00:00:00.000+00:00"));
 });
 afterEach(() => {
   MockDate.reset();
