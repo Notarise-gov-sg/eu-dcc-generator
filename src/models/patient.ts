@@ -1,12 +1,16 @@
 import dayjs from "dayjs";
 import utc from "dayjs/plugin/utc";
 import customParseFormat from "dayjs/plugin/customParseFormat";
+import timezone from "dayjs/plugin/timezone";
 import { PatientDetails, EuNamRecord } from "../types";
 import { convertStandardizationName } from "../util";
 
 dayjs.locale("en-sg");
 dayjs.extend(utc);
 dayjs.extend(customParseFormat);
+dayjs.extend(timezone);
+
+dayjs.tz.setDefault("Asia/Singapore");
 
 /**
  * Helper function to generate Patient details.
