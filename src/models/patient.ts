@@ -1,5 +1,12 @@
+import dayjs from "dayjs";
+import utc from "dayjs/plugin/utc";
+import customParseFormat from "dayjs/plugin/customParseFormat";
 import { PatientDetails, EuNamRecord } from "../types";
 import { convertStandardizationName } from "../util";
+
+dayjs.locale("en-sg");
+dayjs.extend(utc);
+dayjs.extend(customParseFormat);
 
 /**
  * Helper function to generate Patient details.
@@ -28,9 +35,13 @@ export const genPatientDetails = ({
     euNam.gnt = convertStandardizationName(firstName);
   }
 
+  const dob = dayjs(dateOfBirth, ["YYYY", "YYYY-MM", "YYYY-MM-DD"], true).isValid()
+  ? dateOfBirth
+  : dayjs(dateOfBirth).format("YYYY-MM-DD");
+
   return {
     nam: euNam,
-    dob: dateOfBirth,
+    dob,
     meta
   };
 };

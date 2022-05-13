@@ -48,4 +48,34 @@ describe("genPatientDetails()", () => {
     }
     `);
   });
+
+  it("should produce valid PatientDetails with ISO 8601 dob", () => {
+    const valid: PatientDetails = { ...validPatientDetails, dateOfBirth: "2022-05-12T16:00:00.000Z" };
+    expect(() => genPatientDetails(valid)).not.toThrowError();
+    expect(genPatientDetails(valid)).toStrictEqual({
+      "dob": "2022-05-13",
+      "meta": valid.meta,
+      "nam": {
+        "fn": "Tan",
+        "fnt": "TAN",
+        "gn": "Chen Chen",
+        "gnt": "CHEN<CHEN",
+      },
+    });
+  });
+
+  it("should produce valid PatientDetails with YYYY-MM dob", () => {
+    const valid: PatientDetails = { ...validPatientDetails, dateOfBirth: "1990-01" };
+    expect(() => genPatientDetails(valid)).not.toThrowError();
+    expect(genPatientDetails(valid)).toStrictEqual({
+      "dob": "1990-01",
+      "meta": valid.meta,
+      "nam": {
+        "fn": "Tan",
+        "fnt": "TAN",
+        "gn": "Chen Chen",
+        "gnt": "CHEN<CHEN",
+      },
+    });
+  });
 });
