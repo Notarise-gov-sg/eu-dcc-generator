@@ -271,4 +271,30 @@ describe("genVaccinationRecord()", () => {
       }
     ]);
   });
+  it("should throw error if VaccinationRecord have invalid vaccinationDateTime format", () => {
+    const validVaccinationRecord: VaccinationRecord = {
+      vaccinations: [
+        {
+          vaccineCode: "3339641000133109",
+          vaccineName: "PFIZER-BIONTECH COVID-19 Vaccine [Tozinameran] Injection",
+          vaccineLot: "Lot12345",
+          vaccinationDateTime: "02 Feb 2021",
+          vaccinationLocationCode: "HIC001",
+          vaccinationCountry: "SG"
+        },
+        {
+          vaccineCode: "3339641000133109",
+          vaccineName: "PFIZER-BIONTECH COVID-19 Vaccine [Tozinameran] Injection",
+          vaccineLot: "Lot97531",
+          vaccinationDateTime: "2021-03-03",
+          vaccinationLocationCode: "HIC002",
+          vaccinationCountry: "SG"
+        }
+      ],
+      effectiveDate: "2021-03-17"
+    };
+    expect(() => genVaccinationRecord(validVaccinationRecord, "2023-02-22T00:00:00.000Z", "MOH", "abc-adv-cde")).toThrowError(
+      `Invalid vaccinationDateTime (02 Feb 2021). Should be YYYY-MM-DD format`
+    );
+  });
 });

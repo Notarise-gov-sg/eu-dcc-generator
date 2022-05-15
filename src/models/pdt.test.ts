@@ -233,7 +233,7 @@ describe("genTestingRecord()", () => {
       collectionDateTime: "12 Feb 2015" as any // Invalid collectionDateTime
     }];
     expect(() => genTestingRecord(invalid, "2023-02-22T00:00:00.000Z", "MOH", "abc-adv-cde")).toThrowError(
-      `Invalid dateOfBirth (12 Feb 2015). Should be YYYY-MM-DD or YYYY-MM or YYYY or ISO-8601 format`
+      `Invalid collectionDateTime (12 Feb 2015). Should be ISO-8601 date and time format`
     );
   });
 });

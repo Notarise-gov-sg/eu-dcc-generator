@@ -60,12 +60,12 @@ export const genTestingRecord = (testingRecords: TestingRecord[], expiryDateTime
     if (
       !dayjs(
         validateCollectionDateTime,
-        ["YYYY", "YYYY-MM", "YYYY-MM-DD"],
+        ["YYYY-MM-DD"],
         true
       ).isValid()
     ) {
       throw new Error(
-        `Invalid dateOfBirth (${testingRecord.collectionDateTime}). Should be YYYY-MM-DD or YYYY-MM or YYYY or ISO-8601 format`
+        `Invalid collectionDateTime (${testingRecord.collectionDateTime}). Should be ISO-8601 date and time format`
       );
     }
       
@@ -99,14 +99,10 @@ export const genTestingRecord = (testingRecords: TestingRecord[], expiryDateTime
         : testingRecord.testTypeCode === "LP217198-3"
         ? "ART"
         : "";
-    const collectionDateTime = 
-      dayjs(testingRecord.collectionDateTime, ["YYYY", "YYYY-MM", "YYYY-MM-DD"], true).isValid()
-        ? testingRecord.collectionDateTime
-        : dayjs.utc(testingRecord.collectionDateTime).format("YYYY-MM-DDTHH:mm:ss[Z]");
     const euTestRecord: EuTestRecord = {
       tg: targetDisease,
       tt: testingRecord.testTypeCode,
-      sc: collectionDateTime,
+      sc: dayjs.utc(testingRecord.collectionDateTime).format("YYYY-MM-DDTHH:mm:ss[Z]"),
       tr: testingRecord.testResultCode,
       tc: testingRecord.testCenter,
       co: testingRecord.testCountry,
