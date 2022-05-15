@@ -225,4 +225,15 @@ describe("genTestingRecord()", () => {
       `Invalid testTypeCode (123456) received. Should be one of these values: ["97097-0","94531-1","94309-2","LP6464-4","LP217198-3"]`
     );
   });
+
+  it("should throw error if TestingRecords have invalid collectionDateTime format", () => {
+    const invalid: TestingRecord[] = [{
+      ...validPCRTestingRecord[0],
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      collectionDateTime: "12 Feb 2015" as any // Invalid collectionDateTime
+    }];
+    expect(() => genTestingRecord(invalid, "2023-02-22T00:00:00.000Z", "MOH", "abc-adv-cde")).toThrowError(
+      `Invalid dateOfBirth (12 Feb 2015). Should be YYYY-MM-DD or YYYY-MM or YYYY or ISO-8601 format`
+    );
+  });
 });

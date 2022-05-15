@@ -50,7 +50,7 @@ export const genPatientDetails = ({
 
   const dob = dayjs(dateOfBirth, ["YYYY", "YYYY-MM", "YYYY-MM-DD"], true).isValid()
   ? dateOfBirth
-  : dayjs(dateOfBirth).format("YYYY-MM-DD");
+  : dayjs.utc(dateOfBirth).format("YYYY-MM-DD");
 
   return {
     nam: euNam,

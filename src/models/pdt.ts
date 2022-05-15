@@ -1,5 +1,12 @@
+import dayjs from "dayjs";
+import utc from "dayjs/plugin/utc";
+import customParseFormat from "dayjs/plugin/customParseFormat";
 import { EuTestRecord } from "../index";
 import { notariseAcceptedTestResultCodes, euAcceptedTestResultCodes, notariseAcceptedTestTypeCodes, euAcceptedTestTypeCodes, TestingRecord, TestRecord } from "../types";
+
+dayjs.locale("en-sg");
+dayjs.extend(utc);
+dayjs.extend(customParseFormat);
 
 /**
  * What EU DCC uses:
@@ -48,7 +55,20 @@ export const genTestingRecord = (testingRecords: TestingRecord[], expiryDateTime
         )}`
       );
     }
-    
+
+    const validateCollectionDateTime = testingRecord.collectionDateTime.split('T')[0]; // take only date value if ISO-8601 format
+    if (
+      !dayjs(
+        validateCollectionDateTime,
+        ["YYYY", "YYYY-MM", "YYYY-MM-DD"],
+        true
+      ).isValid()
+    ) {
+      throw new Error(
+        `Invalid dateOfBirth (${testingRecord.collectionDateTime}). Should be YYYY-MM-DD or YYYY-MM or YYYY or ISO-8601 format`
+      );
+    }
+      
     /* If Notarise codes are used, map it to EU DCC codes */
 
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -79,10 +99,14 @@ export const genTestingRecord = (testingRecords: TestingRecord[], expiryDateTime
         : testingRecord.testTypeCode === "LP217198-3"
         ? "ART"
         : "";
+    const collectionDateTime = 
+      dayjs(testingRecord.collectionDateTime, ["YYYY", "YYYY-MM", "YYYY-MM-DD"], true).isValid()
+        ? testingRecord.collectionDateTime
+        : dayjs.utc(testingRecord.collectionDateTime).format("YYYY-MM-DDTHH:mm:ss[Z]");
     const euTestRecord: EuTestRecord = {
       tg: targetDisease,
       tt: testingRecord.testTypeCode,
-      sc: testingRecord.collectionDateTime,
+      sc: collectionDateTime,
       tr: testingRecord.testResultCode,
       tc: testingRecord.testCenter,
       co: testingRecord.testCountry,
