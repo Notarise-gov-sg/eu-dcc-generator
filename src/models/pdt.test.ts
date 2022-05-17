@@ -202,6 +202,31 @@ describe("genTestingRecord()", () => {
     ]);
   });
 
+  it("should produce valid TestingRecord for ART record with iso test collection date", () => {
+    const valid: TestingRecord[] = [{
+      ...validARTTestingRecord[0],
+      collectionDateTime: "2020-09-27" // valid iso test collection date
+    }];
+    expect(() => genTestingRecord(valid, "2023-02-22T00:00:00.000Z", "MOH", "abc-adv-cde")).not.toThrowError();
+    expect(genTestingRecord(valid, "2023-02-22T00:00:00.000Z", "MOH", "abc-adv-cde")).toStrictEqual([
+      {
+        euTestRecord: {
+            ci: "URN:UVCI:01:SG:1ABC-ADV-CDE",
+            co: "SG",
+            is: "MOH",
+            ma: "1833",
+            sc: "2020-09-27T00:00:00Z",
+            tc: "MacRitchie Medical Clinic",
+            tg: "840539006",
+            tr: "260415000", // The correct "Not detected" code
+            tt: "LP217198-3",
+        },
+        expiryDateTime: "2023-02-22T00:00:00.000Z",
+        type: "ART",
+      }
+    ]);
+  });
+
   it("should throw error there is an invalid testResultCode", () => {
     const invalid: TestingRecord[] = [{
       ...validPCRTestingRecord[0],
