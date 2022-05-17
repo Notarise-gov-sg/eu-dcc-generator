@@ -1,3 +1,4 @@
+import MockDate from 'mockdate';
 import { BasicDetails, PatientDetails, TestingRecord, VaccinationRecord } from "../types";
 import { genEuDcc } from "./eu-dcc-generator";
 
@@ -6,13 +7,11 @@ import notarisePdtPcrSingleRecord from "../../fixtures/notarise-examples/pdt-pcr
 import notariseVacSingleRecord from "../../fixtures/notarise-examples/vac-single-record.json";
 import notarisePdtMultiRecord from "../../fixtures/notarise-examples/pdt-multi-record.json";
 
-let dateSpy: jest.SpyInstance;
 beforeEach(() => {
-  const targetDate = new Date(1677039719000);
-  dateSpy = jest.spyOn(global, "Date").mockImplementation(() => targetDate);
+  MockDate.set(new Date("2022-01-01T00:00:00.000+00:00"));
 });
 afterEach(() => {
-  dateSpy.mockRestore();
+  MockDate.reset();
 });
 
 const patientDetails: PatientDetails = {

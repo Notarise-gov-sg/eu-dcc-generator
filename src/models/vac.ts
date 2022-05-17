@@ -1,6 +1,13 @@
-import { parseISO, isBefore, isAfter } from 'date-fns'
+import dayjs from "dayjs";
+import utc from "dayjs/plugin/utc";
+import customParseFormat from "dayjs/plugin/customParseFormat";
+import { parseISO, isBefore, isAfter } from 'date-fns';
 import { Vaccination, VaccinationRecord, VaccineRecord } from "../types";
 import * as sddInformations from "../static/SDD.mapping.json";
+
+dayjs.locale("en-sg");
+dayjs.extend(utc);
+dayjs.extend(customParseFormat);
 
 /**
  * Helper function to generate Eu Vaccination records.
@@ -8,14 +15,30 @@ import * as sddInformations from "../static/SDD.mapping.json";
  * @returns
  */
 export const genVaccinationRecord = (vaccinationRecord: VaccinationRecord, expiryDateTime: string, issuerName: string, reference: string): VaccineRecord[] => {
+  const validatedVaccinationRecords = (vaccinationRecord.vaccinations).map((vaccination) => {
+    const validateVaccinationDateTime = vaccination.vaccinationDateTime.split('T')[0]; // take only date value if ISO-8601 format
+    if (
+      !dayjs(
+        validateVaccinationDateTime,
+        ["YYYY-MM-DD"],
+        true
+      ).isValid()
+    ) {
+      throw new Error(
+        `Invalid vaccinationDateTime (${vaccination.vaccinationDateTime}). Should be YYYY-MM-DD format`
+      );
+    }
+    vaccination.vaccinationDateTime = validateVaccinationDateTime;
+    return vaccination;
+  });
 
   /* assign primary series of vaccination records by filtering `vaccinationDateTime` is before `effectiveDate` or without `effectiveDate` */
-  const primaryVaccinations: Vaccination[] = (vaccinationRecord.vaccinations).filter((vaccination) =>
+  const primaryVaccinations: Vaccination[] = (validatedVaccinationRecords).filter((vaccination) =>
     vaccinationRecord.effectiveDate? isBefore(parseISO(vaccination.vaccinationDateTime), parseISO(vaccinationRecord.effectiveDate)): true
   );
 
   /* set`isBooster` flag as `true` in vaccination records when `vaccinationDateTime` is after CMB `effectiveDate` */
-  const euVaccinations: Vaccination[] = (vaccinationRecord.vaccinations).map((vaccination) => {
+  const euVaccinations: Vaccination[] = (validatedVaccinationRecords).map((vaccination) => {
     vaccination.isBooster = vaccinationRecord.effectiveDate? isAfter(parseISO(vaccination.vaccinationDateTime), parseISO(vaccinationRecord.effectiveDate)): false;
     return vaccination;
   });

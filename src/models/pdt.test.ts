@@ -202,6 +202,31 @@ describe("genTestingRecord()", () => {
     ]);
   });
 
+  it("should produce valid TestingRecord for ART record with iso test collection date", () => {
+    const valid: TestingRecord[] = [{
+      ...validARTTestingRecord[0],
+      collectionDateTime: "2020-09-27" // valid iso test collection date
+    }];
+    expect(() => genTestingRecord(valid, "2023-02-22T00:00:00.000Z", "MOH", "abc-adv-cde")).not.toThrowError();
+    expect(genTestingRecord(valid, "2023-02-22T00:00:00.000Z", "MOH", "abc-adv-cde")).toStrictEqual([
+      {
+        euTestRecord: {
+            ci: "URN:UVCI:01:SG:1ABC-ADV-CDE",
+            co: "SG",
+            is: "MOH",
+            ma: "1833",
+            sc: "2020-09-27T00:00:00Z",
+            tc: "MacRitchie Medical Clinic",
+            tg: "840539006",
+            tr: "260415000", // The correct "Not detected" code
+            tt: "LP217198-3",
+        },
+        expiryDateTime: "2023-02-22T00:00:00.000Z",
+        type: "ART",
+      }
+    ]);
+  });
+
   it("should throw error there is an invalid testResultCode", () => {
     const invalid: TestingRecord[] = [{
       ...validPCRTestingRecord[0],
@@ -223,6 +248,17 @@ describe("genTestingRecord()", () => {
 
     expect(() => genTestingRecord(invalid, "2023-02-22T00:00:00.000Z", "MOH", "abc-adv-cde")).toThrowError(
       `Invalid testTypeCode (123456) received. Should be one of these values: ["97097-0","94531-1","94309-2","LP6464-4","LP217198-3"]`
+    );
+  });
+
+  it("should throw error if TestingRecords have invalid collectionDateTime format", () => {
+    const invalid: TestingRecord[] = [{
+      ...validPCRTestingRecord[0],
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      collectionDateTime: "12 Feb 2015" as any // Invalid collectionDateTime
+    }];
+    expect(() => genTestingRecord(invalid, "2023-02-22T00:00:00.000Z", "MOH", "abc-adv-cde")).toThrowError(
+      `Invalid collectionDateTime (12 Feb 2015). Should be ISO-8601 date and time format`
     );
   });
 });
