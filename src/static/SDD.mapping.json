@@ -166,5 +166,29 @@
         "vaccine_prophylaxis_code": "1119349007",
         "vaccine_medicinal_product_code": "EU/1/20/1507",
         "authorization_holder_code": "ORG-100031184"
+    },
+    "1452031000133103": {
+        "short_name": "CONVIDECIA",
+        "name": "CONVIDECIA COVID-19 Vaccine [Ad5.CoV2-S] Injection",
+        "disease_agent_targeted_code": "840539006",
+        "vaccine_prophylaxis_code": "J07BX03",
+        "vaccine_medicinal_product_code": "Convidecia",
+        "authorization_holder_code": "ORG-100013793"
+    },
+    "1452041000133107": {
+        "short_name": "CONVIDECIA",
+        "name": "CONVIDECIA COVID-19 Vaccine [Ad5.CoV2-S] 50 billion viral particles/0.5mL Injection",
+        "disease_agent_targeted_code": "840539006",
+        "vaccine_prophylaxis_code": "J07BX03",
+        "vaccine_medicinal_product_code": "Convidecia",
+        "authorization_holder_code": "ORG-100013793"
+    },
+    "1452051000133109": {
+        "short_name": "CONVIDECIA",
+        "name": "CONVIDECIA COVID-19 Vaccine [Ad5.CoV2-S] 150 billion viral particles/1.5mL Injection",
+        "disease_agent_targeted_code": "840539006",
+        "vaccine_prophylaxis_code": "J07BX03",
+        "vaccine_medicinal_product_code": "Convidecia",
+        "authorization_holder_code": "ORG-100013793"
     }
 }
