@@ -28,7 +28,7 @@
   "dependencies": {
     "@pathcheck/dcc-sdk": "0.0.17",
     "date-fns": "^2.28.0",
-    "dayjs": "^1.11.2",
+    "dayjs": "^1.11.3",
     "debug": "^4.3.3"
   },
   "devDependencies": {
