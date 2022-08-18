@@ -192,7 +192,7 @@
         "authorization_holder_code": "ORG-100013793"
     },
     "1748971000133109": {
-        "short_name": "MODERNA",
+        "short_name": "MODERNA/SPIKEVAX",
         "name": "MODERNA/SPIKEVAX COVID-19 Vaccine [Elasomeran] 250 microgram/ 2.5 mL Injection",
         "disease_agent_targeted_code": "840539006",
         "vaccine_prophylaxis_code": "1119349007",
