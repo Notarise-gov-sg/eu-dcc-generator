@@ -190,5 +190,13 @@
         "vaccine_prophylaxis_code": "J07BX03",
         "vaccine_medicinal_product_code": "Convidecia",
         "authorization_holder_code": "ORG-100013793"
+    },
+    "1748971000133109": {
+        "short_name": "MODERNA/SPIKEVAX",
+        "name": "MODERNA/SPIKEVAX COVID-19 Vaccine [Elasomeran] 250 microgram/ 2.5 mL Injection",
+        "disease_agent_targeted_code": "840539006",
+        "vaccine_prophylaxis_code": "1119349007",
+        "vaccine_medicinal_product_code": "EU/1/20/1507",
+        "authorization_holder_code": "ORG-100031184"
     }
 }
