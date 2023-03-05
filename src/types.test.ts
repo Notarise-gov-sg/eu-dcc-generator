@@ -70,6 +70,6 @@ describe("types", () => {
   });
 
   it("should fail VaccinationRecord[] type check", () => {
-    expect(isVaccinationRecord([{ ...vaccinationRecord[0], foo: "bar" }])).toBe(false);
+    expect(isVaccinationRecord([{ ...vaccinationRecord, foo: "bar" }])).toBe(false);
   });
 });
