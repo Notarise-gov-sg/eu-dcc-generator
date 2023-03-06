@@ -12,3 +12,11 @@
 // global.React = React
 // global.ReactDom = ReactDom
 // global.PropTypes = PropTypes
+
+
+// console.log("ok");
+
+// console.log(Buffer);
+
+// console.log(globalThis.Buffer);
+

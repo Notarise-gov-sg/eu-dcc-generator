@@ -10,15 +10,10 @@ module.exports = {
   setupFilesAfterEnv: [
     '<rootDir>/jest/setup.js'
   ],
-  transform: {
-    "^.+\\.(ts|tsx)$": ["ts-jest",{
-      tsconfig: require('./tsconfig.json'),
-      babelConfig: require('./babel.config.js'),
-    }]
-  },
-  globals: {
-     TextEncoder: require("util").TextEncode,
-     TextDecoder: require("util").TextDecoder
- },
- transformIgnorePatterns: ['<rootDir>/node_modules/'],
+  // transform: {
+  //   "^.+\\.(ts|tsx)$": ["babel-jest"]
+  // },
+//  transformIgnorePatterns: ['<rootDir>/node_modules/'],
+ testEnvironment: "node",
+//  verbose: true
 };
