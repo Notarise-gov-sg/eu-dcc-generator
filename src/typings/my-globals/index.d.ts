@@ -1,1 +1,1 @@
-declare module "@pathcheck/dcc-sdk";
+declare module "@dchocoboo/dcc-sdk";

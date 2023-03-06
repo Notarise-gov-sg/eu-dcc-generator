@@ -1,4 +1,4 @@
-import { parseCWT, debug } from "@pathcheck/dcc-sdk";
+import { parseCWT, debug } from "@dchocoboo/dcc-sdk";
 import EuDcc from "./index";
 import { BasicDetails, PatientDetails, RecoveryRecord, TestingRecord, VaccinationRecord } from "./types";
 

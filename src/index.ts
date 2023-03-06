@@ -1,4 +1,4 @@
-import { signAndPack } from "@pathcheck/dcc-sdk";
+import { signAndPack } from "@dchocoboo/dcc-sdk";
 import { VacTemplate,  PdtTemplate, RecTemplate, VacCertificate, PdtCertificate, RecCertificate} from "./types";
 import { genEuDcc } from "./models/eu-dcc-generator";
 
@@ -6,7 +6,7 @@ const APPLE_URL_PREFIX = `https://redirect.health.apple.com/EU-DCC/#`;
 
 /* 
   Implement this function for set specific expiry datetime. 
-  `makeCWT` function in `@pathcheck/dcc-sdk` package only support to set expiry month.   
+  `makeCWT` function in `@dchocoboo/dcc-sdk` package only support to set expiry month.   
 */
 const makeCWT = (payload: VacCertificate | PdtCertificate | RecCertificate, expiryDateTime: string, issuerName: string) => {
   const CWT_ISSUER = 1;
