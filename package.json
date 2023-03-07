@@ -26,7 +26,7 @@
   },
   "license": "MIT",
   "dependencies": {
-    "@dchocoboo/dcc-sdk": "^0.0.19-beta-2",
+    "@dchocoboo/dcc-sdk": "^0.0.19-beta-3",
     "@tsconfig/node18": "^1.0.1",
     "date-fns": "^2.28.0",
     "dayjs": "^1.11.2",
