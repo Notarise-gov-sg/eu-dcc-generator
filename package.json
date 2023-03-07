@@ -1,6 +1,6 @@
 {
   "name": "@notarise-gov-sg/eu-dcc-generator",
-  "version": "0.0.0-development",
+  "version": "1.7.1",
   "description": "A helper library for generate EU Digital Covid Certificates",
   "author": {
     "name": "Notarise",
