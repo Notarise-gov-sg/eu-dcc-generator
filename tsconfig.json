@@ -1,9 +1,10 @@
 {
   "compilerOptions": {
     "resolveJsonModule": true,
-    "declaration": true
+    "declaration": true,
+    "outDir": "./dist"
   },
   "include": ["src"],
-  "exclude": ["src/**/*.test.ts"],
+  "exclude": ["src/**/*.test.ts","node_modules"],
   "extends": "@tsconfig/node18"
 }
