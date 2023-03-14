@@ -1,6 +1,6 @@
 {
   "name": "@notarise-gov-sg/eu-dcc-generator",
-  "version": "0.0.0-development",
+  "version": "1.7.1",
   "description": "A helper library for generate EU Digital Covid Certificates",
   "author": {
     "name": "Notarise",
@@ -26,22 +26,24 @@
   },
   "license": "MIT",
   "dependencies": {
-    "@pathcheck/dcc-sdk": "0.0.17",
+    "@dchocoboo/dcc-sdk": "^0.0.19-beta-3",
+    "@tsconfig/node18": "^1.0.1",
     "date-fns": "^2.28.0",
     "dayjs": "^1.11.2",
-    "debug": "^4.3.3"
+    "debug": "^4.3.3",
+    "ts-jest": "^27.1.5"
   },
   "devDependencies": {
     "@babel/preset-env": "^7.16.5",
     "@babel/preset-typescript": "^7.16.5",
     "@types/debug": "^4.1.7",
-    "@types/jest": "^27.4.1",
+    "@types/jest": "^27.5.2",
     "@typescript-eslint/eslint-plugin": "^5.12.1",
     "@typescript-eslint/parser": "^5.12.1",
     "eslint": "^8.5.0",
     "eslint-config-prettier": "^8.4.0",
     "eslint-plugin-import": "^2.25.3",
-    "jest": "^27.4.5",
+    "jest": "^27.5.1",
     "mockdate": "^3.0.5",
     "semantic-release": "^19.0.3",
     "typescript": "^4.5.4"
