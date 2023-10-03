@@ -1,7 +1,7 @@
 {
     "3339641000133109": {
         "short_name": "PFIZER",
-        "name": "PFIZER-BIONTECH/COMIRNATY ORIGINAL COVID-19 Vaccine [Tozinameran] Injection",
+        "name": "PFIZER-BIONTECH/COMIRNATY COVID-19 Vaccine [Tozinameran] Injection",
         "disease_agent_targeted_code": "840539006",
         "vaccine_prophylaxis_code": "1119349007",
         "vaccine_medicinal_product_code": "EU/1/20/1528",
@@ -113,7 +113,7 @@
     },
     "878571000133104": {
         "short_name": "PFIZER",
-        "name": "PFIZER-BIONTECH/COMIRNATY ORIGINAL (AGE 5 TO <12 YEARS) COVID-19 Vaccine [Tozinameran] 100 microgram/ 10 dose Injection",
+        "name": "PFIZER-BIONTECH/COMIRNATY (AGE 5 TO <12 YEARS) COVID-19 Vaccine [Tozinameran] 100 microgram/ 10 dose Injection",
         "disease_agent_targeted_code": "840539006",
         "vaccine_prophylaxis_code": "1119349007",
         "vaccine_medicinal_product_code": "EU/1/20/1528",
@@ -201,7 +201,7 @@
     },
     "2090011000133109": {
         "short_name": "PFIZER",
-        "name": "PFIZER-BIONTECH/COMIRNATY ORIGINAL (AGE 6 MONTHS TO <5 YEARS) COVID-19 Vaccine [Tozinameran] 30 microgram/ 10 dose Injection",
+        "name": "PFIZER-BIONTECH/COMIRNATY (AGE 6 MONTHS TO <5 YEARS) COVID-19 Vaccine [Tozinameran] 30 microgram/ 10 dose Injection",
         "disease_agent_targeted_code": "840539006",
         "vaccine_prophylaxis_code": "1119349007",
         "vaccine_medicinal_product_code": "EU/1/20/1528",
@@ -241,7 +241,7 @@
     },
     "3356751000133109": {
         "short_name": "PFIZER",
-        "name": "PFIZER-BIONTECH/COMIRNATY ORIGINAL COVID-19 Vaccine [Tozinameran] 180 microgram/ 6 dose Injection",
+        "name": "PFIZER-BIONTECH/COMIRNATY COVID-19 Vaccine [Tozinameran] 180 microgram/ 6 dose Injection",
         "disease_agent_targeted_code": "840539006",
         "vaccine_prophylaxis_code": "1119349007",
         "vaccine_medicinal_product_code": "EU/1/20/1528",
