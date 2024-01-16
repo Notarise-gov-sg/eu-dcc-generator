@@ -159,6 +159,22 @@
         "vaccine_medicinal_product_code": "EU/1/21/1618",
         "authorization_holder_code": "ORG-100032020"
     },
+    "3428331000133105": {
+        "short_name": "NUVAXOVID",
+        "name": "NUVAXOVID OMICRON XBB.1.5 COVID-19 Vaccine [NVX-CoV2601 (adjuvanted)] Injection",
+        "disease_agent_targeted_code": "840539006",
+        "vaccine_prophylaxis_code": "J07BX03",
+        "vaccine_medicinal_product_code": "EU/1/21/1618",
+        "authorization_holder_code": "ORG-100032020"
+    },
+    "3438571000133100": {
+        "short_name": "NUVAXOVID",
+        "name": "NUVAXOVID OMICRON XBB.1.5 COVID-19 Vaccine [NVX-CoV2601 (adjuvanted)] 25 microgram/ 2.5 mL Injection",
+        "disease_agent_targeted_code": "840539006",
+        "vaccine_prophylaxis_code": "J07BX03",
+        "vaccine_medicinal_product_code": "EU/1/21/1618",
+        "authorization_holder_code": "ORG-100032020"
+    },
     "3418091000133101": {
         "short_name": "MODERNA",
         "name": "MODERNA COVID-19 Vaccine [mRNA-1273] 1 mg/ 5 mL Injection",
@@ -194,6 +210,22 @@
     "1748971000133109": {
         "short_name": "MODERNA/SPIKEVAX",
         "name": "MODERNA/SPIKEVAX COVID-19 Vaccine [Elasomeran] 250 microgram/ 2.5 mL Injection",
+        "disease_agent_targeted_code": "840539006",
+        "vaccine_prophylaxis_code": "1119349007",
+        "vaccine_medicinal_product_code": "EU/1/20/1507",
+        "authorization_holder_code": "ORG-100031184"
+    },
+    "3326701000133109": {
+        "short_name": "MODERNA/SPIKEVAX",
+        "name": "MODERNA/SPIKEVAX OMICRON XBB.1.5 COVID-19 Vaccine [Andusomeran] Injection",
+        "disease_agent_targeted_code": "840539006",
+        "vaccine_prophylaxis_code": "1119349007",
+        "vaccine_medicinal_product_code": "EU/1/20/1507",
+        "authorization_holder_code": "ORG-100031184"
+    },
+    "3324091000133107": {
+        "short_name": "MODERNA/SPIKEVAX",
+        "name": "MODERNA/SPIKEVAX OMICRON XBB.1.5 COVID-19 Vaccine [Andusomeran] 250 microgram/ 2.5 mL Injection",
         "disease_agent_targeted_code": "840539006",
         "vaccine_prophylaxis_code": "1119349007",
         "vaccine_medicinal_product_code": "EU/1/20/1507",
